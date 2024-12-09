@@ -49,15 +49,64 @@
 }
 
 .tag {
-        display: inline-block;
-        background-color: #f0f0f0;
-        color: #333;
-        padding: 5px 10px; 
-        border-radius: 20px;
-        font-size: 14px; 
-        font-weight: 500;
-        text-align: center;
-        white-space: nowrap; 
-        margin: 5px; 
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+     display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 5px 10px; 
+    border-radius: 20px;
+    font-size: 14px; 
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap; 
+    margin: 5px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
+    /* Single Project Main */
+
+    .single-project {
+        background-color: #f9f9f9;
+        padding: 40px 0;
+    }
+    
+    .singleproject-subtitle {
+        font-size: 1.25rem;
+        color: #333;
+        margin-bottom: 15px;
+    }
+    
+    .singleproject-toolstack .badge {
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .singleproject-preview {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .singleproject-title {
+        font-size: 2rem;
+        color: #0056b3;
+    }
+    
+    .singleproject-info {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+    
+    .comment {
+        align-items: center;
+    }
+    
+    .comment-author {
+        color: #0056b3;
+    }
+    
+    .comment-info {
+        color: #666;
+        font-size: 0.9rem;
+    }
+    

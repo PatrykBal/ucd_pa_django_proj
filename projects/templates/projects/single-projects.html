@@ -2,16 +2,80 @@
 
 {% block content %}
 
-<img style="max-width: 500px;" src="{{ project.featured_image.url }}">
 
-<h1>{{project.title}}</h1>
-<hr>
-{%for tag in project.tags.all %}
-<span style="border:1px solid gray">{{tag}}</span>
-{% endfor %}
-<hr>
-<br>
-<p>{{project.description}}</p>
+<!-- Main Section -->
+<main class="single-project py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-md-4 mb-4">
+                <h3 class="singleproject-subtitle">Tools & Stacks</h3>
+                <div class="singleproject-toolstack mb-4">
+                    {% for tag in project.tags.all %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% if project.source_link %}
+                <a class="btn btn-sm btn-primary d-block mb-3" href="{{project.source_link}}" target="_blank">
+                    <i class="im im-external-link"></i> Source Code
+                </a>
+                {% endif %}
+
+                {% if project.demo_link %}
+                <a class="btn btn-sm btn-primary d-block mb-3" href="{{project.source_link}}" target="_blank"><i
+                        class="im im-external-link"></i>Live Demo
+
+                </a>
+                {% endif %}
+
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-8">
+                <img class="singleproject-preview img-fluid mb-4" src="{{ project.featured_image.url }}" alt="Portfolio Thumbnail" />
+                <h2 class="singleproject-title mb-3">{{ project.title }}</h2>
+                <h3 class="singleproject-subtitle">About the Project</h3>
+                <div class="singleproject-info mb-4">
+                    {{ project.description }}
+                </div>
+
+                <div class="comments">
+                    <h3 class="singleproject-subtitle">Feedback</h3>
+                    <h5 class="project-rating mb-3">
+                        {{ project.vote_ratio }}% Positive Feedback ({{ project.vote_total }}
+                        Vote{{ project.vote_total|pluralize:"s" }})
+                    </h5>
+
+                    <form class="form mb-4" action="{% url 'project' project.id %}" method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="mb-3">
+                            <label for="formInput#textarea" class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                        {% endfor %}
+
+                        <input class="btn btn-primary" type="submit" value="Add Review" />
+                    </form>
+
+                    <a href="" class="d-block mb-3">Please login to leave a review</a>
+
+                    <div class="comment-list">
+                        <div class="comment d-flex mb-3">
+                            <a href="">
+                                <img class="avatar rounded-circle me-3" src="" alt="user" style="width: 50px; height: 50px;" />
+                            </a>
+                            <div>
+                                <a href="" class="comment-author fw-bold d-block"></a>
+                                <p class="comment-info text-muted small"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 
 {% endblock %}

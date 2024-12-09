@@ -4,7 +4,7 @@
 
 
 <div class="container mt-4 ">
-    <h2 class="mb-4 text-center">Projects Overview</h2>
+    <h2 class="mb-4 text-center">Projects</h2>
 
     <!-- Search Bar -->
     <div class="row justify-content-center mb-4">
@@ -24,7 +24,7 @@
     <div class="card-container"> 
    
         {% for project in projects %}
-        <div class="card-item"
+        <div class="card-item">
             <a href="{% url 'project' project.id %}" class="text-decoration-none text-dark">
             <div class="card shadow-sm h-100">
                 <div class="card-body">
