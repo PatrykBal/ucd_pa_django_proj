@@ -2,29 +2,55 @@
 {% block content %}
 
 
-<h1> Projects </h1>
 
-<table>
-    <tr>
-        <th>Projects</th>
-        <th>Positive Votes</th>
-        <th>Votes</th>
-        <th></th>
-        <th></th>
-    </tr>
-    {% for project in projects %}
-    <tr>
-        <td>{{project.title}}</td>
-        <td>{{project.vote_ratio}}%</td>
-        <td>{{project.vote_total}}</td>
-        <td>{{project.created}}</td>
-        <td><a href="{% url 'update-project' project.id %}">Edit</a></td>
-        <td><a href="{% url 'delete-project' project.id %}">Delete</a></td>
-        <td><a href="{% url 'project' project.id %}">View</a></td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container mt-4 ">
+    <h2 class="mb-4 text-center">Projects Overview</h2>
 
+    <!-- Search Bar -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+            <form method="GET" action="{% url 'projects' %}">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Search projects..." value="{{ request.GET.search|default:'' }}">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  
+
+ <!-- Cards -->
+<div class="container mt-4">
+    <div class="card-container"> 
+   
+        {% for project in projects %}
+        <div class="card-item"
+            <a href="{% url 'project' project.id %}" class="text-decoration-none text-dark">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <img src="{{ project.featured_image.url }}" class="card-img-top" alt="">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p><a class="project_author text-decoration-none text-dark" href=""> By Patryk Balecki </p>
+                    <div class="card-text">
+                        <span class="project-rating">
+                        <span style="font-weight: bold;">{{ project.vote_ratio }}%</span>
+                         Positive Feedback ({{ project.vote_total }}) Vote{{project.vote_total|pluralize:"s"}}
+                        </p>
+                        <div class="project-tags">
+                            {% for tag in project.tags.all %}
+                            <span class="tag">
+                                <small>{{tag}}</small>
+                            </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 
 
 {% endblock content %}
