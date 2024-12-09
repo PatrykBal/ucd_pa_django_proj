@@ -110,3 +110,52 @@
         font-size: 0.9rem;
     }
     
+    /* Project Form */
+
+    .form-field {
+        display: grid;
+        position: relative;
+        align-items: center;
+    }
+
+    .form-page .form-wraper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f8f9fa;
+    }
+    
+    .content-box {
+        max-width: 600px;
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    .back-button {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    
+    .back-button i {
+        margin-right: 5px;
+        font-size: 1.2rem;
+    }
+    
+    .project-tag {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 0.9rem;
+        border-radius: 20px;
+        color: #fff;
+        cursor: pointer;
+    }
+    
+    .project-tag:hover {
+        background-color: #0056b3;
+    }
+    
+    textarea {
+        resize: none;
+    }

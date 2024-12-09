@@ -1,14 +1,36 @@
 {% extends 'main.html' %}
 {% block content %}
 
-<h1> Project Form </h1>
+<h1 class="text-center mb-4">Project Form</h1>
 
-<form action="" method ="POST" enctype="multipart/form-data"> 
-    {% csrf_token %}
+<main class="form-page py-5 bg-light">
+    <div class="container">
+        <div class="content-box bg-white p-4 shadow rounded">
+            <div class="form-wrapper">
+                <a class="back-button btn btn-outline-secondary mb-3" href="{% url 'projects' %}">
+                    <i class="bi bi-arrow-left"></i> Back
+                </a>
 
-    {{form.as_p}}
-    
-    <input type="submit">
-</form>
+                <form class="form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                    <!-- Input:Text -->
+                    <div class="form-field mb-4">
+                        <label for="formInput#text" class="form-label mb-2">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+
+
+
+                    <!-- Submit Button -->
+                    <input class="btn btn-primary w-100" type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
 
 {% endblock %}
