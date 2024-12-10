@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<main class="confirm-page d-flex justify-content-center align-items-center">
+    <div class=" mt-1 content-box bg-light p-4 rounded shadow">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p class="mb-4 text-center">
+                Are you sure you want to delete <strong>"{{ object }}"</strong>?
+            </p>
+
+            <div class="d-flex justify-content-between">
+                <a href="{{request.GET.next}}" class="btn btn-secondary">Go Back</a>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+{% endblock %}

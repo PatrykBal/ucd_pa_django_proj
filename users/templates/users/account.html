@@ -60,7 +60,7 @@
         <!-- Skills Section -->
         <div class="mb-4">
           <h3 class="mb-3">Skills</h3>
-          <a class="btn btn-primary btn-sm mb-3" href="#">Add Skill</a>
+          <a class="btn btn-primary btn-sm mb-3" href="{% url 'create-skill' %}">Add Skill</a>
           <table class="table table-bordered">
             {% for skill in skills %}
             <tr>
@@ -69,8 +69,8 @@
                 <p>{{ skill.description }}</p>
               </td>
               <td>
-                <a class="btn btn-secondary btn-sm me-2" href="">Edit</a>
-                <a class="btn btn-danger btn-sm" href="">Delete</a>
+                <a class="btn btn-secondary btn-sm me-2" href="{% url 'update-skill' skill.id %}">Edit</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'delete-skill' skill.id %}?next=/account">Delete</a>
               </td>
             </tr>
             {% endfor %}
@@ -95,7 +95,7 @@
               </td>
               <td>
                 <a class="btn btn-secondary btn-sm me-2" href="{% url 'update-project' project.id %}">Edit</a>
-                <a class="btn btn-danger btn-sm" href="{% url 'delete-project'  project.id %}">Delete</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'delete-project'  project.id %}?next=/account">Delete</a>
               </td>
             </tr>
             {% endfor %}
