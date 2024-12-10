@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Users</h1>
+
 <main class="profile py-5 bg-light">
     <div class="container">
         <div class="row g-4">
@@ -47,7 +47,7 @@
                             {% endif %}
                         </ul>
                         {% if request.user.profile.id != profile.id %}
-                        <a href="" class="btn btn-primary">Send Message</a>
+                        <a href="" class="btn btn-primary text-decoration-none text-white ">Send Message</a>
                         {% endif %}
                     </div>
                 </div>

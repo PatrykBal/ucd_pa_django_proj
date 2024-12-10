@@ -362,5 +362,45 @@ input.form-control:focus {
     margin-right: 0.5rem;
 }
 
+/* Edit Account */
+
+.form-page {
+    min-height: 100vh; 
+    background-color: #f8f9fa; 
+}
+
+.content-box {
+    max-width: 600px; 
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+label {
+    font-weight: 500; 
+    display: block;
+    margin-bottom: 0.5rem; 
+}
+
+input, select, textarea {
+    display: block;
+    width: 100%; 
+    padding: 0.75rem; 
+    font-size: 1rem; 
+    border: 1px solid #ced4da; 
+    border-radius: 4px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none; 
+    border-color: #80bdff;
+    box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+}
+
+.btn-primary {
+    font-size: 1.1rem; 
+    padding: 0.75rem; 
+}
+
 
 
