@@ -25,11 +25,13 @@ def loginUser(request):
         except:
             messages.error(request, 'Username does not exist')
 
-        user = authenticate(request, username=username, password=password)  
+        user = authenticate(request, username=username, password=password) 
 
         if user is not None:
             login(request, user)
-            return redirect('profiles') 
+            return redirect(request.GET['next'] if 'next' in request.GET else 'account')
+ 
+
         else:
             messages.error(request, 'Username OR password is incorrect') 
 
