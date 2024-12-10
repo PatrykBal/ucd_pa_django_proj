@@ -1,0 +1,110 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+      <div class="col-md-4">
+        <!-- Card -->
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <a class="btn btn-sm btn-secondary mb-2" href="#">Edit</a>
+            <img class="rounded-circle mb-3" src="{{ profile.profile_image.url }}" alt="Profile Picture" width="150">
+            <h2 class="h5 text-primary">{{ profile.name }}</h2>
+            <p class="text-muted">{{ profile.short_intro }}</p>
+            <p class="text-muted"><i class=""></i> Based in {{ profile.location }}</p>
+  
+            <ul class="list-inline">
+              {% if profile.social_github %}
+              <li class="list-inline-item">
+                <a title="Github" href="{{ profile.social_github }}" target="_blank" class="btn btn-outline-dark btn-sm">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_twitter %}
+              <li class="list-inline-item">
+                <a title="Twitter" href="{{ profile.social_twitter }}" target="_blank"
+                  class="btn btn-outline-primary btn-sm">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_linkedin %}
+              <li class="list-inline-item">
+                <a title="LinkedIn" href="{{ profile.social_linkedin }}" target="_blank"
+                  class="btn btn-outline-info btn-sm">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+              </li>
+              {% endif %}
+              {% if profile.social_website %}
+              <li class="list-inline-item">
+                <a title="Website" href="{{ profile.social_website }}" target="_blank" class="btn btn-outline-secondary btn-sm">
+                    <i class="fa-solid fa-globe"></i>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-8">
+        <!-- About Section -->
+        <div class="mb-4">
+          <h3>About Me</h3>
+          <p>{{ profile.bio }}</p>
+        </div>
+  
+        <!-- Skills Section -->
+        <div class="mb-4">
+          <h3 class="mb-3">Skills</h3>
+          <a class="btn btn-primary btn-sm mb-3" href="#">Add Skill</a>
+          <table class="table table-bordered">
+            {% for skill in skills %}
+            <tr>
+              <td>
+                <strong>{{ skill.name }}</strong>
+                <p>{{ skill.description }}</p>
+              </td>
+              <td>
+                <a class="btn btn-secondary btn-sm me-2" href="">Edit</a>
+                <a class="btn btn-danger btn-sm" href="">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+  
+        <!-- Projects Section -->
+        <div>
+          <h3 class="mb-3">Projects</h3>
+          <a class="btn btn-success btn-sm mb-3" href="{% url 'create-project' %}">Add Project</a>
+          <table class="table table-bordered align-middle">
+            {% for project in projects %}
+            <tr>
+              <td class="w-25">
+                <a href="{% url 'project' project.id %}">
+                  <img class="img-fluid rounded" src="{{ project.featured_image.url }}" alt="Project Thumbnail">
+                </a>
+              </td>
+              <td>
+                <a href="{% url 'project' project.id %}" class="text-decoration-none">{{ project.title }}</a>
+                <p>{{ project.description|slice:"150" }}</p>
+              </td>
+              <td>
+                <a class="btn btn-secondary btn-sm me-2" href="">Edit</a>
+                <a class="btn btn-danger btn-sm" href="">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+{% endblock %}

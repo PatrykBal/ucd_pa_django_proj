@@ -324,5 +324,43 @@ input.form-control:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+/* Account */
+
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-body img.avatar {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.table th, 
+.table td {
+    vertical-align: middle;
+}
+
+.table img {
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.settings-table {
+    width: 100%;
+}
+
+.btn {
+    border-radius: 4px;
+}
+
+.dev-social .list-inline-item {
+    margin-right: 0.5rem;
+}
+
 
 

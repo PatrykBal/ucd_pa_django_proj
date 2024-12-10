@@ -24,7 +24,7 @@
         </ul>
           {% if request.user.is_authenticated %}
 
-            <a class="nav-link active" aria-current="page" href="{% url 'create-project' %}">Add Project &nbsp</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'account' %}">Account &nbsp</a>
 
           <a style="text-decoration: none;" href="{% url 'logout' %}" class="btn btn-secondary navbar-btn">Log Out</a>
           {% else %}
