@@ -94,8 +94,8 @@
                 <p>{{ project.description|slice:"150" }}</p>
               </td>
               <td>
-                <a class="btn btn-secondary btn-sm me-2" href="">Edit</a>
-                <a class="btn btn-danger btn-sm" href="">Delete</a>
+                <a class="btn btn-secondary btn-sm me-2" href="{% url 'update-project' project.id %}">Edit</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'delete-project'  project.id %}">Delete</a>
               </td>
             </tr>
             {% endfor %}
