@@ -159,3 +159,73 @@
     textarea {
         resize: none;
     }
+
+    /* Profiles Main */
+
+
+.hero-section {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.hero-section-box h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.hero-section-search .form-control {
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.hero-section-search .btn {
+    border-radius: 30px;
+}
+
+.dev-list {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.dev-meta h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.dev-info {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.dev-skills .badge {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.dev-skills .badge:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
