@@ -20,12 +20,16 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Inbox</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'create-project' %}">Add Project</a>
-            </li>
 
         </ul>
-          <button href="" class="btn btn-secondary navbar-btn">Login/Sign Up</button>
+          {% if request.user.is_authenticated %}
+
+            <a class="nav-link active" aria-current="page" href="{% url 'create-project' %}">Add Project &nbsp</a>
+
+          <a style="text-decoration: none;" href="{% url 'logout' %}" class="btn btn-secondary navbar-btn">Log Out</a>
+          {% else %}
+          <a style="text-decoration: none;" href="{% url 'login' %}" class="btn btn-secondary navbar-btn">Login/Sign Up</a>
+          {% endif %}
       </div>
     </div>
   </nav>
