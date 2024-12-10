@@ -17,15 +17,11 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'projects' %}">Projects</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Inbox</a>
-            </li>
 
         </ul>
           {% if request.user.is_authenticated %}
-
-            <a class="nav-link active" aria-current="page" href="{% url 'account' %}">Account &nbsp</a>
-
+          <a class="nav-link active" aria-current="page" href="{% url 'inbox' %}">Inbox &nbsp</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'account' %}">Account &nbsp</a>
           <a style="text-decoration: none;" href="{% url 'logout' %}" class="btn btn-secondary navbar-btn">Log Out</a>
           {% else %}
           <a style="text-decoration: none;" href="{% url 'login' %}" class="btn btn-secondary navbar-btn">Login/Sign Up</a>

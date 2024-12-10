@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<main class="form-page py-5">
+    <div class="container">
+      <div class="content-box bg-light p-4 rounded shadow">
+        <div class="form-wrapper">
+          <a class="back-button btn btn-outline-secondary mb-3" href="{% url 'user-profile' recipient.id %}">Back</a>
+  
+          <form class="form" method="POST">
+            {% csrf_token %}
+  
+            {% if request.user.is_authenticated == False %}
+            <div class="form-field mb-3">
+              <label for="formInput#text" class="form-label">{{ form.name.label }}</label>
+              {{form.name}}
+            </div>
+  
+            <div class="form-field mb-3">
+              <label for="formInput#text" class="form-label">{{ form.email.label }}</label>
+              {{form.email}}
+            </div>
+            {% endif %}
+  
+            <div class="form-field mb-3">
+              <label for="formInput#text" class="form-label">{{ form.subject.label }}</label>
+              {{form.subject}}
+            </div>
+  
+            <div class="form-field mb-3">
+              <label for="formInput#text" class="form-label">{{ form.body.label }}</label>
+              {{form.body}}
+            </div>
+  
+            <input class="btn btn-primary w-100" type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<main class="inbox py-5">
+    <div class="container">
+      <div class="content-box bg-light p-3 rounded shadow">
+        <h3 class="inbox-title mb-4">
+          New Messages (<span>{{ unreadCount }}</span>)
+        </h3>
+  
+        <ul class="messages list-unstyled">
+          {% for message in messageRequests %}
+          {% if message.is_read == False %}
+          <li class="message message-unread">
+            {% else %}
+          <li class="message">
+            {% endif %}
+          <li class="message mb-4 {% if not message.is_read %}bg-warning-light border-warning{% else %}bg-white border-secondary{% endif %} border rounded p-3 shadow-sm">
+            <a href="{% url 'message' message.id %}" class="text-decoration-none text-dark d-flex justify-content-between align-items-center">
+              <div>
+                <span class="message__author fw-bold">{{ message.name }}</span>
+                <span class="message__subject d-block text-muted">{{ message.subject }}</span>
+              </div>
+              <span class="message__date text-muted small">{{ message.created }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </main>
+  
+
+{% endblock content %}

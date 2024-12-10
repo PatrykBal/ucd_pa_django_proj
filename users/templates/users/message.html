@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<main class="message-page py-5">
+    <div class="container">
+      <div class="content-box bg-light p-4 rounded shadow">
+        <div class="message">
+          <a class="back-button btn btn-outline-secondary mb-3" href="{% url 'inbox' %}">
+            <i class="bi bi-arrow-left"></i> Back to Inbox
+          </a>
+          <h2 class="message-subject mb-3">{{ message.subject }}</h2>
+          
+          {% if message.sender %}
+          <a href="{% url 'user-profile' message.sender.id %}" class="message__author text-primary fw-bold">
+            {{ message.name }}
+          </a>
+          {% else %}
+          <p class="message-author text-secondary fw-bold">{{ message.name }}</p>
+          {% endif %}
+          
+          <p class="message-date text-muted small mb-4">{{ message.created }}</p>
+          
+          <div class="message-body p-3 bg-white rounded shadow-sm">
+            {{ message.body|linebreaksbr }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+
+{% endblock content %}
