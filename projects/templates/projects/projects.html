@@ -30,7 +30,8 @@
                 <div class="card-body">
                     <img src="{{ project.featured_image.url }}" class="card-img-top" alt="">
                     <h5 class="card-title">{{ project.title }}</h5>
-                    <p><a class="project_author text-decoration-none text-dark" href=""> By Patryk Balecki </p>
+                    <p><a class="project_author text-decoration-none text-dark" 
+                    href="{% url 'project' project.id %}"> By {{project.owner.name}} </p>
                     <div class="card-text">
                         <span class="project-rating">
                         <span style="font-weight: bold;">{{ project.vote_ratio }}%</span>
