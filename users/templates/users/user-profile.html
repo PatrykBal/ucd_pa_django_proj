@@ -1,0 +1,126 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1>Users</h1>
+<main class="profile py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Left Column -->
+            <div class="col-md-4">
+                <div class="card text-center shadow-sm">
+                    <div class="card-body">
+                        <img class="avatar rounded-circle mb-3" src="{{ profile.profile_image.url }}" alt="Profile Image"
+                            style="width: 150px; height: 150px;" />
+                        <h2 class="dev-name">{{ profile.name }}</h2>
+                        <p class="dev-title text-muted">{{ profile.short_intro }}</p>
+                        <p class="dev-location text-secondary">Based in {{ profile.location }}</p>
+                        <!-- Social Links -->
+                        <ul class="list-inline dev-social mb-3">
+                            {% if profile.social_github %}
+                            <li class="list-inline-item">
+                                <a title="Github" href="{{ profile.social_github }}" target="_blank">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if profile.social_twitter %}
+                            <li class="list-inline-item">
+                                <a title="Twitter" href="{{ profile.social_twitter }}" target="_blank">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if profile.social_linkedin %}
+                            <li class="list-inline-item">
+                                <a title="LinkedIn" href="{{ profile.social_linkedin }}" target="_blank">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if profile.social_website %}
+                            <li class="list-inline-item">
+                                <a title="Website" href="{{ profile.social_website }}" target="_blank">
+                                    <i class="fa-solid fa-globe"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                        {% if request.user.profile.id != profile.id %}
+                        <a href="" class="btn btn-primary">Send Message</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-md-8">
+                <!-- About Me Section -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h3>About Me</h3>
+                        <p>{{ profile.bio }}</p>
+                    </div>
+                </div>
+                <!-- Skills Section -->
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h3>Skills</h3>
+                        <div class="row">
+                            {% for skill in topSkills %}
+                            <div class="col-md-6 mb-3">
+                                <h5 class="fw-bold">{{ skill.name }}</h5>
+                                <p class="text-muted">{{ skill.description }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <h5>Other Skills</h5>
+                        <div>
+                            {% for skill in otherSkills %}
+                            <span class="badge bg-secondary me-2 mb-2">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- Projects Section -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3>Projects</h3>
+                        <div class="row g-3">
+                            {% for project in profile.project_set.all %}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card h-100 project shadow-sm">
+                                    <a href="{% url 'project' project.id %}" class="text-decoration-none text-dark">
+                                        <img class="card-img-top" src="{{ project.featured_image.url }}"
+                                            alt="Project Thumbnail">
+                                        <div class="card-body">
+                                            <h5 class="project-title">{{ project.title }}</h5>
+                                            <p class="project-author">
+                                                <a href="{% url 'user-profile' project.owner.id %}" class="text-primary text-decoration-none text-dark">
+                                                    By {{ project.owner.name }}
+                                                </a>
+                                            </p>
+                                            <p class="project-rating">
+                                                <span class="fw-bold">{{ project.vote_ratio }}%</span> Positive Feedback
+                                                ({{ project.vote_total }} Vote{{ project.vote_total|pluralize:"s" }})
+                                            </p>
+                                            <div class="project-tags">
+                                                {% for tag in project.tags.all %}
+                                                <span class="badge bg-info me-2">{{ tag }}</span>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock content %}
